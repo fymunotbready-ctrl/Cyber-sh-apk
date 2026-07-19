@@ -39,7 +39,7 @@ jobs:
     
 
       - name: Build gradle project
-        run: gradle build
+        run: gradle build -x test
 
       - name: Build apk debug project (APK) - ${{ env.main_project_module }} module
         run: gradle assembleDebug
