@@ -1,0 +1,6 @@
+{
+  "name": "cybersh",
+  "description": "A mobile AI coding assistant with Agent, Sec, Vibe, Code, Chat, and Generate modes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
