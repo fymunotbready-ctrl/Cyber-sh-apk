@@ -36,8 +36,7 @@ jobs:
         with:
           gradle-version: 9.3.1
 
-      - name: Run gradle tests
-        run: gradle test
+    
 
       - name: Build gradle project
         run: gradle build
