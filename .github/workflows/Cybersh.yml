@@ -36,34 +36,11 @@ jobs:
         with:
           gradle-version: 9.3.1
 
-    
-
-      - name: Build gradle project
-        run: gradle build -x test
-
-      - name: Build apk debug project (APK) - ${{ env.main_project_module }} module
-        run: gradle assembleDebug
-
-      - name: Build apk release project (APK) - ${{ env.main_project_module }} module
-        run: gradle assemble
-
-      - name: Build app bundle release (AAB) - ${{ env.main_project_module }} module
-        run: gradle ${{ env.main_project_module }}:bundleRelease
+      - name: Build debug APK only
+        run: gradle assembleDebug -x test
 
       - name: Upload APK Debug - ${{ env.repository_name }}
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - APK(s) debug generated
+          name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - APK debug generated
           path: ${{ env.main_project_module }}/build/outputs/apk/debug/
-
-      - name: Upload APK Release - ${{ env.repository_name }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - APK(s) release generated
-          path: ${{ env.main_project_module }}/build/outputs/apk/release/
-
-      - name: Upload AAB (App Bundle) Release - ${{ env.repository_name }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - App bundle(s) AAB release generated
-          path: ${{ env.main_project_module }}/build/outputs/bundle/release/
